@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "dev": "nodemon index"
   },
   "husky": {
     "hooks": {
@@ -38,6 +39,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.5",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
   }
 }

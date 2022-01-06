@@ -1,3 +1,5 @@
+const colors = require('colors/safe')
+
 class Person {
   constructor(name, age) {
     this.name = name
@@ -22,7 +24,7 @@ class Person {
 
   get profile() {
     return `
-       # ${this.name} (${this.age})
+       # ${colors.red(this.name)} (${this.age})
         Bio: ${this.bio}
 
         ## Photos (${this.photos.length})
