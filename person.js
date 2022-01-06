@@ -1,5 +1,3 @@
-const colors = require('colors/safe')
-
 class Person {
   constructor(name, age) {
     this.name = name
@@ -24,18 +22,14 @@ class Person {
 
   get profile() {
     return `
-       # ${colors.red(this.name)} (${this.age})
+       # ${this.name} (${this.age})
         Bio: ${this.bio}
-
         ## Photos (${this.photos.length})
-
         ${this.photos
-          .map(photo => {
-            return `### ${photo.filename}
-        ${photo.likedBy.map(person => person.name).join(', ')}`
-          })
+          .map(photo => `### ${photo.filename}, ${photo.likedBy.map(person => person.name).join(', ')}`)
           .join('\n')}`
   }
+
   set profile(newValue) {
     throw new Error('profile is only a getter. You cant override it')
   }

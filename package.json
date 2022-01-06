@@ -41,5 +41,8 @@
     "lint-staged": "^12.1.5",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "colors": "^1.4.0"
   }
 }
