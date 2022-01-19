@@ -1,14 +1,10 @@
-class Person {
+class User {
   constructor(name, age) {
     this.name = name
     this.age = age
     this.bio = ''
     this.photos = []
     this.likes = []
-  }
-
-  greet(person) {
-    console.log(`Hello ${person.name}, this is ${this.name}`)
   }
 
   addPhoto(photo) {
@@ -26,7 +22,7 @@ class Person {
         Bio: ${this.bio}
         ## Photos (${this.photos.length})
         ${this.photos
-          .map(photo => `### ${photo.filename}, ${photo.likedBy.map(person => person.name).join(', ')}`)
+          .map(photo => `### ${photo.filename}, ${photo.likedBy.map(user => user.name).join(', ')}`)
           .join('\n')}`
   }
 
@@ -35,4 +31,4 @@ class Person {
   }
 }
 
-module.exports = Person
+module.exports = User

@@ -2,11 +2,11 @@
   "name": "novel-project",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "lint-staged",
-    "dev": "nodemon index"
+    "dev": "nodemon ./bin/www",
+    "start": "node ./bin/www"
   },
   "husky": {
     "hooks": {
@@ -43,6 +43,13 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^6.1.7",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
   }
 }
