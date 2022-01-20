@@ -12,6 +12,13 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+if (app.get('env') == 'development') {
+  app.use(requier('connect-livereload')())
+  require('livereload')
+  .createServer({extraExts: ['pug']})
+  .watch([`${__dirname}`, `${__dirname}/views`])
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

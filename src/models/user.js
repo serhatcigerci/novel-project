@@ -1,34 +1,47 @@
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
+
+const userSchema = new mongoose.Schema({
+name: {
+  type: String,
+  unique: true,
+  required: true,
+},
+age: {
+  type: Number,
+  required: true,
+},
+bio: String,
+photos: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Photo',
+    autopopulate: true,
+  },
+],
+likes: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Photo',
+  },
+],
+})
 class User {
-  constructor(name, age) {
-    this.name = name
-    this.age = age
-    this.bio = ''
-    this.photos = []
-    this.likes = []
-  }
-
-  addPhoto(photo) {
+ async addPhoto(photo) {
     this.photos.push(photo)
+    await this.save()
   }
 
-  likePhoto(photo) {
+  async likePhoto(photo) {
     this.likes.push(photo)
     photo.likedBy.push(this)
-  }
-
-  get profile() {
-    return `
-       # ${this.name} (${this.age})
-        Bio: ${this.bio}
-        ## Photos (${this.photos.length})
-        ${this.photos
-          .map(photo => `### ${photo.filename}, ${photo.likedBy.map(user => user.name).join(', ')}`)
-          .join('\n')}`
-  }
-
-  set profile(newValue) {
-    throw new Error('profile is only a getter. You cant override it')
+    
+    await photo.save()
+    await this.save()
   }
 }
 
-module.exports = User
+userSchema.loadClass(User)
+userSchema.plugin(autopopulate)
+
+module.exports = mongoose.model('User', userSchema)
