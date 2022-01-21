@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require('express')
 
-const router = express.Router();
+const router = express.Router()
 
 const User = require('../models/user')
 const Photo = require('../models/photo')
@@ -21,24 +21,26 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/initialize', async (req, res) => {
- const kadri = new User('kadri', 48)
- const kubra = new User('kubra', 28)
- const serhat = new User('serhat', 22)
+  const kadri = await User.create({ name: 'kadri', age: 48 })
+  const kubra = await User.create({ name: 'kubra', age: 28 })
 
- const berlinPhoto = new Photo('berlin.jpg')
- const munichPhoto = new Photo('munich.jpg')
+  const serhat = await User.create({ name: 'serhat', age: 22 })
+  serhat.bio = 'just a dude trying to learn how to code.'
 
- serhat.addPhoto(berlinPhoto)
- serhat.addPhoto(munichPhoto)
- serhat.bio = 'just a dude trying to learn how to code.'
+  const berlinPhoto = await Photo.create({ filename: 'berlin.jpg' })
+  const munichPhoto = await Photo.create({ filename: 'munich.jpg' })
 
- kubra.likePhoto(berlinPhoto)
- kadri.likePhoto(berlinPhoto)
+  await serhat.addPhoto(berlinPhoto)
+  await serhat.addPhoto(munichPhoto)
 
- await berlinPhoto.save()
- await munichPhoto.save() 
- 
- res.sendStatus(200)
+  await kubra.likePhoto(berlinPhoto)
+  await kadri.likePhoto(berlinPhoto)
+
+  await berlinPhoto.save()
+  await munichPhoto.save()
+
+  console.log(serhat)
+  res.sendStatus(200)
 })
 
 router.get('/:userId', async (req, res) => {
@@ -47,4 +49,4 @@ router.get('/:userId', async (req, res) => {
   if (user) res.render('user', { user })
   else res.sendStatus(404)
 })
-module.exports = router;
+module.exports = router

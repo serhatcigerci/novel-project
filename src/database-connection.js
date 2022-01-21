@@ -6,10 +6,10 @@ const dbName = process.env.MONGODB_DATABASE
 
 mongoose.set('debug', true)
 
-
 mongoose
   .connect(
     `mongodb+srv://${username}:${password}@cluster0.j8ftn.mongodb.net/${dbName}?retryWrites=true&w=majority`,
+
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
