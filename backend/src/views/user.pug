@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 #{user.name} (#{user.age})
+  p Bio: #{user.bio}
+  h2 Books (#{user.books.length})
+
+  each book in user.books
+    h3 #{book.filename}
+    if book.likedBy.length == 0
+      p no likes yet!
+    else
+      p #{book.likedBy.map(user => user.name).join(', ')}
