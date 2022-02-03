@@ -21,10 +21,10 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/initialize', async (req, res) => {
-  const kadri = await User.create({ name: 'kadri', age: 48 })
-  const kubra = await User.create({ name: 'kubra', age: 28 })
+  const kadri = await User.create({ name: 'kadri', age: 48, email: "kadri@email.com"})
+  const kubra = await User.create({ name: 'kubra', age: 28, email: "kubra@email.com"})
 
-  const serhat = await User.create({ name: 'serhat', age: 22 })
+  const serhat = await User.create({ name: 'serhat', age: 22, email: "serhat@email.com"})
   serhat.bio = 'just a dude trying to learn how to code.'
 
   const Book1 = await Book.create({ filename: 'berlin.jpg' })
@@ -42,18 +42,32 @@ router.get('/initialize', async (req, res) => {
   res.sendStatus(200)
 })
 
+router.post('/:userId/adds', async (req, res) => {
+  const user = await User.findById(req.params.userId)
+  const book = await Book.findById(req.body.bookId)
+
+  await user.addBook(book)
+  res.sendStatus(200)
+})
+
+router.post('/:userId/likes', async (req, res) => {
+  const user = await User.findById(req.params.userId)
+  const book = await Book.findById(req.body.bookId)
+
+  await user.likeBook(book)
+  res.sendStatus(200)
+})
+
 router.get('/:userId', async (req, res) => {
   const user = await User.findById(req.params.userId)
 
-  if (user) res.render('user', { user })
+  if (user) res.send(user)
   else res.sendStatus(404)
 })
 
-/* POST create a user */
-router.post('/', async (req, res) => {
-  const createdUser = await User.create(req.body)
-  res.send(createdUser)
+router.get('/:userId/json', async (req, res) => {
+  const user = await User.findById(req.params.userId)
+  res.send(user)
 })
 
 module.exports = router
-

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const mongoose = require('mongoose')
 
 const username = process.env.MONGODB_USERNAME
@@ -17,3 +18,5 @@ mongoose
   })
   .then(() => console.log('connection established'))
   .catch(console.log)
+
+  module.exports = mongoose.connection
