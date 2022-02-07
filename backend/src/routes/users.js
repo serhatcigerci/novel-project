@@ -21,10 +21,17 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/initialize', async (req, res) => {
-  const kadri = await User.create({ name: 'kadri', age: 48, email: "kadri@email.com"})
-  const kubra = await User.create({ name: 'kubra', age: 28, email: "kubra@email.com"})
+  const kadri = new User({ name: 'kadri', age: 48, email: "kadri@email.com"})
+  await kadri.setPassword('test')
+  await kadri.save()
 
-  const serhat = await User.create({ name: 'serhat', age: 22, email: "serhat@email.com"})
+  const kubra = new User({ name: 'kubra', age: 28, email: "kubra@email.com"})
+  await kubra.setPassword('test')
+  await kubra.save()
+
+  const serhat = new User({ name: 'serhat', age: 22, email: "serhat@email.com"})
+  await serhat.setPassword('test')
+  await serhat.save()
   serhat.bio = 'just a dude trying to learn how to code.'
 
   const Book1 = await Book.create({ filename: 'berlin.jpg' })

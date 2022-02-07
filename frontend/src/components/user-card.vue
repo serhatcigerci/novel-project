@@ -14,9 +14,9 @@ export default {
 .box
   h1 {{ user.name }} ({{ user.age }})
   p Bio: {{ user.bio || defaultBio }}
-  h2 Photos ({{ user.books.length }})
+  h2 Books ({{ user.books.length }})
 
-  .photo(v-for="book in user.books")
+  .book(v-for="book in user.books")
     h3 {{ book.filename }}
     p(v-if="!book.likedBy.length")
       | no likes yet!
