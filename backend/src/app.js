@@ -4,20 +4,30 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 const passport = require('passport')
+const cors = require('cors')
+const mongoose = require('mongoose')
 const User = require('./models/user')
-const mongooseConnection = require('./database-connection')
-const clientPromise = Promise.resolve(mongooseConnection.getClient())
+
+require('./database-connection')
+
+const clientPromise = mongoose.connection.asPromise().then(connection => connection.getClient())
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const booksRouter = require('./routes/books')
 const accountsRouter = require('./routes/accounts')
 
-
 const app = express()
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+)
 
 if (app.get('env') == 'development') {
   app.use(require('connect-livereload')())
@@ -25,6 +35,8 @@ if (app.get('env') == 'development') {
     .createServer({ extraExts: ['pug'] })
     .watch([`${__dirname}`, `${__dirname}/views`])
 }
+
+app.set('trust proxt', 1)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -35,13 +47,18 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-app.use(session({
-  secret: ['thisisnotasupersecuresecretsecret', 'thisisanothernotasupersecuresecretsecret'],
-  store: MongoStore.create({ clientPromise, stringify: false }),
-  cookie: {
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-  }
-}));
+app.use(
+  session({
+    secret: ['thisisnotasupersecuresecretsecret', 'thisisanothernotasupersecuresecretsecret'],
+    store: MongoStore.create({ clientPromise, stringify: false }),
+    cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      path: '/api',
+      sameSite: 'none',
+      secure: true,
+    },
+  })
+)
 
 app.use(passport.initialize())
 app.use(passport.session())

@@ -2,6 +2,11 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from 'axios'
 
+//const socket = io(process.env.VUE_APP_BASE_URL)
+
+axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
+axios.defaults.withCredentials = true
+
 Vue.use(Vuex);
 
 const mutations = {
