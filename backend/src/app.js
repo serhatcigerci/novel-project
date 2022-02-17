@@ -10,7 +10,7 @@ const passport = require('passport')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./models/user')
-
+//const io = require(socket.io)
 require('./database-connection')
 
 const clientPromise = mongoose.connection.asPromise().then(connection => connection.getClient())
