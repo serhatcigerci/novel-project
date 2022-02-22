@@ -51,3 +51,10 @@ export default {
     div(v-if="backendError") {{ backendError }}
     div Already have an account? <router-link to="/login">Log in</router-link>
 </template>
+
+<style lang="scss" scoped>
+label {
+  display: block;
+  margin: 1rem 0;
+}
+</style>
