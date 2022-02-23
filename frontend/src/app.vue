@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss">
 body {
-  background: linear-gradient(to right, rgb(90, 90, 90), rgb(255, 255, 255))
+  background: linear-gradient(to right, rgb(90, 90, 90), rgb(180, 173, 173))
 }
 .logo {
   display: flex;
