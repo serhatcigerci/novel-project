@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '../views/login.vue'
 import Register from '../views/register.vue'
 import Profile from "../views/profile.vue"
+import Home from "../views/home.vue"
 Vue.use(VueRouter)
 
 export default function init(store) {
@@ -10,6 +11,11 @@ export default function init(store) {
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
+      {
+        path: '/',
+        name: 'Home',
+        component: Home,
+      },
       {
         path: '/',
         name: 'Profile',

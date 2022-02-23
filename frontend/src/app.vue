@@ -24,9 +24,18 @@ export default {
       router-link(to="/register") Register
       a(@click="doLogout" href="#") Logout
     router-view
+    .logo
+        router-link(to="/")
+          img(src="@/assets/mylogo.png")
 </template>
 
 <style lang="scss">
+.logo {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -47,5 +56,4 @@ export default {
     }
   }
 }
-
 </style>
