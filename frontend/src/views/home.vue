@@ -11,21 +11,23 @@ export default {
 }
 </script>
 
-<template lang="pug">
-  .card
-    .headline
-      .name 
-        h1.title NOVELSCHNELL
-      .slogan
-        p Create and Share!
-    .summary
-      p This is a place for both writing and reading
-      p Why are you even waiting?
+<template lang="pug">  
+    .card
+      .headline
+        .name 
+          h1.title NOVELSCHNELL
+        .slogan
+          p Create and Share!
+      .summary
+        p This is a place for both writing and reading
+        p Why are you even waiting?
 </template>
 
 <style lang="scss">
-p,
-h1 {
+.body{
+  background-color: brown;
+}
+p, h1 {
   font-size: 30px;
   color: black;
   margin: 0px;
