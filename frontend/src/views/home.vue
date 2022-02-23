@@ -12,29 +12,29 @@ export default {
 </script>
 
 <template lang="pug">
-  .welcome-card
-    .card
-      .headline
-        .name 
-          h1.title NOVELSCHNELL
-        .slogan
-          p Create and Share!
-      .summary
-        p This is a place for both writing and reading
-        p Why are you even waiting?
+  .card
+    .headline
+      .name 
+        h1.title NOVELSCHNELL
+      .slogan
+        p Create and Share!
+    .summary
+      p This is a place for both writing and reading
+      p Why are you even waiting?
 </template>
 
 <style lang="scss">
 p,
 h1 {
   font-size: 30px;
-  color: var(--pink);
+  color: black;
   margin: 0px;
 }
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   .headline {
     display: flex;
     flex-direction: column;
@@ -49,11 +49,6 @@ h1 {
     align-items: center;
     p {
       font-size: 30px;
-    }
-    @media (min-width: 768px) {
-      p {
-        font-size: 40px;
-      }
     }
   }
 }

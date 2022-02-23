@@ -18,34 +18,48 @@ export default {
 
 <template lang="pug">
   #app
+    .logo
+        router-link(to="/")
+          img(src="@/assets/mylogo.png" style="width: auto; height: auto; max-width: 100px; max-height: 100px;")
     #nav
       router-link(to="/profile") Profile
       router-link(to="/login") Login
       router-link(to="/register") Register
       a(@click="doLogout" href="#") Logout
     router-view
-    .logo
-        router-link(to="/")
-          img(src="@/assets/mylogo.png")
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .logo {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  
+  img {
+    width: 3px;
+    height: 3px;
+    display: block;
+    margin: 0;
+  }
 }
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  height: 12%;
+  display: flex;
+  align-items: center;
 }
 
 #nav {
   padding: 30px;
-
+  justify-content: flex-start;
+  flex: 1;
+  text-align: right;
+ 
+  
   a {
     font-weight: bold;
     color: #2c3e50;
