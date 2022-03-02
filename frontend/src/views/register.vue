@@ -57,4 +57,11 @@ label {
   display: block;
   margin: 1rem 0;
 }
+.register {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 </style>

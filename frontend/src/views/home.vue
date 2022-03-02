@@ -19,7 +19,7 @@ export default {
         .slogan
           p Create and Share!
       .summary
-        p This is a place for both writing and reading
+        p This is a place for both writing and reading 
         p Why are you even waiting?
 </template>
 
@@ -27,10 +27,17 @@ export default {
 .body{
   background-color: brown;
 }
-p, h1 {
+h1 {
   font-size: 30px;
   color: black;
   margin: 0px;
+  padding: 5px;
+}
+p { 
+  color: black;
+  justify-content: flex-start;
+  flex: 1;
+  text-align: center;
 }
 .card {
   position: fixed;
@@ -45,7 +52,8 @@ p, h1 {
       font-size: 50px;
     }
   }
-  .summary {
+  .summary, .slogan {
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
