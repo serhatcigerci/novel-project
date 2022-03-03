@@ -42,3 +42,12 @@ export default {
     div(v-if="backendError") {{ backendError }}
     div Don't have an account yet? <router-link to="/register">Register</router-link>
 </template>
+
+<style lang="scss" scoped>
+.login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>

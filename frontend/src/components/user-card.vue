@@ -15,6 +15,7 @@ export default {
   h1 {{ user.name }} ({{ user.age }})
   p Bio: {{ user.bio || defaultBio }}
   h2 Books ({{ user.books.length }})
+  h2 Chapters ({{ user.chapters.length }})
 
   .book(v-for="book in user.books")
     h3 {{ book.filename }}
