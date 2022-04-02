@@ -4,6 +4,8 @@ import Login from '../views/login.vue'
 import Register from '../views/register.vue'
 import Profile from "../views/profile.vue"
 import Home from "../views/home.vue"
+import Books from "../views/books.vue"
+import Write from "../views/write.vue"
 Vue.use(VueRouter)
 
 export default function init(store) {
@@ -17,7 +19,16 @@ export default function init(store) {
         component: Home,
       },
       {
-        path: '/',
+        path: '/Write',
+        component: Write,
+      },
+      {
+        path: '/books',
+        name: 'Books',
+        component: Books,
+      },
+      {
+        path: '/profile',
         name: 'Profile',
         component: Profile,
       },

@@ -50,4 +50,9 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+label {
+  display: block;
+  margin: 1rem 0;
+}
+
 </style>

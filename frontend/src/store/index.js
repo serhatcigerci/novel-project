@@ -63,6 +63,10 @@ const store = new Vuex.Store({
     incrementCount({ commit }) {
       commit(mutations.INCREMENT_COUNT)
     },
+    async fetchBooks() {
+      const bookRequest = await axios.get(`/api/books`)
+      return bookRequest.data
+    },
     async fetchUser(store, id) {
       const userRequest = await axios.get(`/api/users/${id}`)
       return userRequest.data
