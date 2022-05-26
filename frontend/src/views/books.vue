@@ -16,8 +16,14 @@ export default {
     methods: {
         ...mapActions(['fetchBooks'])
     }
-} 
+}
 </script>
+
+<template>
+    <div id="app">
+        <img :src="require('./src/images/lotm.jpg')"/>
+    </div>
+</template>
 
 <template lang="pug">  
     .books  

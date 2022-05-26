@@ -35,8 +35,10 @@ router.get('/initialize', async (req, res) => {
   await serhat.save()
   serhat.bio = 'just a dude trying to learn how to code.'
 
-  const Book1 = await Book.create({ filename: 'Hail the King!' })
-  const Book2 = await Book.create({ filename: 'Overgeared' })
+  const Book1 = await Book.create({ filename: 'Lord of the Mysteries' })
+  const Book2 = await Book.create({ filename: 'Praise the Orc!' })
+  const Book3 = await Book.create({ filename: 'Overgeared' })
+
   const Chapter1 = await Chapter.create({ filename: 'Chapter 1' })
   const Chapter2 = await Chapter.create({ filename: 'Chapter 2' })
 
@@ -56,6 +58,7 @@ router.get('/initialize', async (req, res) => {
 
   await Book1.save()
   await Book2.save()
+  await Book3.save()
 
   await Chapter1.save()
   await Chapter2.save()
