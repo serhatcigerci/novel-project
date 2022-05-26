@@ -22,7 +22,6 @@ export default {
         router-link(to="/")
           img(src="@/assets/mylogo.png" style="width: auto; height: auto; max-width: 100px; max-height: 100px;")
     #nav
-      router-link(to="/write") Write
       router-link(to="/books") Books
       router-link(to="/profile") Profile
       router-link(to="/login") Login
