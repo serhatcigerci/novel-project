@@ -28,20 +28,21 @@ export default {
 }
 </script>
 
-<template lang="pug">
-#app
-  img(:src='image')
-  img(:src='image2')
-  img(:src='image3')
-
+<template>
+<div id="imgs" class="image">
+    <img :src="image"/>
+    <img :src="image2"/>
+    <img :src="image3"/>
+</div>
 </template>
 
-<style lang="scss" scoped>
-.books {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+<style lang="scss">
+.image {
+    justify-content: center;
+    display: flex;
+    width: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-
 </style>
