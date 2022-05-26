@@ -17,10 +17,9 @@ export default {
         .name 
           h1.title NOVELSCHNELL
         .slogan
-          p Create and Share!
+          p More than you can read!
       .summary
-        p This is a place for both writing and reading 
-        p Why are you even waiting?
+        p Start reading right ahead!
 </template>
 
 <style lang="scss">
