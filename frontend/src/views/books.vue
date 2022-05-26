@@ -1,6 +1,8 @@
 <script>
 import { mapActions } from 'vuex'
-
+import image from "/src/views/lotm.jpg"
+import image2 from "/src/views/ogd.jpg"
+import image3 from "/src/views/pto.jpg"
 
 export default {
     name: 'Books',
@@ -15,22 +17,25 @@ export default {
     },
     methods: {
         ...mapActions(['fetchBooks'])
+    }, 
+    data: function () {
+        return {
+           image: image,
+           image2: image2,
+           image3: image3
+        }
     }
 }
 </script>
 
-<template>
-    <div id="app">
-        <img :src="require('./src/images/lotm.jpg')"/>
-    </div>
-</template>
-
-<template lang="pug">  
-    .books  
-        div(v-for="book in books")
-            h1 {{ book.filename }}
+<template lang="pug">
+#app
+  img(:src='image')
+  img(:src='image2')
+  img(:src='image3')
 
 </template>
+
 <style lang="scss" scoped>
 .books {
   position: fixed;
@@ -38,4 +43,5 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 </style>
