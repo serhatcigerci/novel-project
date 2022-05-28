@@ -10,7 +10,7 @@ Fork and clone the repository.
 $ git clone git@github.com:serhatcigerci/novelschnell.git
 ```
 
-Open the project in your coding environment.
+Open the project.
 
 # Install the dependencies
 
